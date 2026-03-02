@@ -469,8 +469,15 @@ const populateNews = (filters) => {
   const filteredNews = getFilteredNews(filters);
   newsGrid.innerHTML = "";
   const until = minimalNews ? 7 : filteredNews.length;
+  let row = 1;
   for (let i = 0; i < until; i++) {
     const card = getNewsCard(filteredNews[i]);
+    if (row % 1 === 0 && Math.random() < 0.4) {
+      card.classList.add('span-2')
+      row += 1;
+    } else {
+      row += 0.5;
+    }
     newsGrid.appendChild(card);
   }
 };
